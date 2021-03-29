@@ -16,13 +16,13 @@ data class NoteDto(
 
     @ColumnInfo(name = "date")
     val date: Long,
-
-    @ColumnInfo(name = "title")
-    val title: String
+//
+//    @ColumnInfo(name = "title")
+//    val title: String
 
 ) {
 
     companion object {
-        const val TABLE_NAME = "note_sunshine"
+        const val TABLE_NAME = "note"
     }
 }

@@ -8,13 +8,13 @@ interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(dto: NoteDto)
 
-    @Query("SELECT * FROM note_sunshine")
+    @Query("SELECT * FROM note")
     suspend fun getAll(): List<NoteDto>
 
     @Delete
     suspend fun delete(dto: NoteDto)
 
-    @Query("DELETE FROM note_sunshine")
+    @Query("DELETE FROM note")
     suspend fun deleteAll()
 
     @Update

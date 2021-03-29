@@ -35,7 +35,7 @@ object DatabaseModule {
         return Room.databaseBuilder(context, NoteDb::class.java, NoteDb.NAME)
 //            .openHelperFactory(factory)
             .fallbackToDestructiveMigration()
-            .addMigrations(NoteDb.MIGRATION_2_3, NoteDb.MIGRATION_3_4)
+//            .addMigrations(NoteDb.MIGRATION_2_3, NoteDb.MIGRATION_3_4)
             .build()
     }
 

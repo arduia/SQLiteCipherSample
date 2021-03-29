@@ -18,7 +18,7 @@ class MainViewModel @Inject constructor(private val dao: NoteDao) : ViewModel() 
     val noteList: LiveData<List<NoteDto>> get() = _noteList
 
     init {
-//        insertInitialDataIfEmpty()
+        insertInitialDataIfEmpty()
         updateList()
     }
 
@@ -26,9 +26,9 @@ class MainViewModel @Inject constructor(private val dao: NoteDao) : ViewModel() 
         viewModelScope.launch(Dispatchers.IO) {
             val list = dao.getAll()
             if (list.size > 3) return@launch
-            dao.insert(NoteDto(0, "Hi1", Date().time, "title1"))
-            dao.insert(NoteDto(1, "Hi2", Date().time, "title2"))
-            dao.insert(NoteDto(2, "Hi3", Date().time, "title3"))
+            dao.insert(NoteDto(0, "Hi1", Date().time))
+            dao.insert(NoteDto(1, "Hi2", Date().time))
+            dao.insert(NoteDto(2, "Hi3", Date().time))
             val newList = dao.getAll()
             _noteList.postValue(newList)
         }
