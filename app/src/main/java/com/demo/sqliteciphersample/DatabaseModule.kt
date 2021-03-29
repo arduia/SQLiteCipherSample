@@ -21,21 +21,21 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): NoteDb {
 
-//        val key = "password"
-//
-//        val testBytes = key.toCharArray()
-//
-//        val state = SQLCipherUtils.getDatabaseState(context, NoteDb.NAME)
-//        if (state == SQLCipherUtils.State.UNENCRYPTED) {
-//            SQLCipherUtils.encrypt(context, NoteDb.NAME, testBytes)
-//        }
-//        val passphrase = SQLiteDatabase.getBytes(testBytes)
-//        val factory = SupportFactory(passphrase)
+        val key = "password"
+
+        val testBytes = key.toCharArray()
+
+        val state = SQLCipherUtils.getDatabaseState(context, NoteDb.NAME)
+        if (state == SQLCipherUtils.State.UNENCRYPTED) {
+            SQLCipherUtils.encrypt(context, NoteDb.NAME, testBytes)
+        }
+        val passphrase = SQLiteDatabase.getBytes(testBytes)
+        val factory = SupportFactory(passphrase)
 
         return Room.databaseBuilder(context, NoteDb::class.java, NoteDb.NAME)
-//            .openHelperFactory(factory)
+            .openHelperFactory(factory)
             .fallbackToDestructiveMigration()
-//            .addMigrations(NoteDb.MIGRATION_2_3, NoteDb.MIGRATION_3_4)
+            .addMigrations(NoteDb.MIGRATION_2_3, NoteDb.MIGRATION_3_4)
             .build()
     }
 
