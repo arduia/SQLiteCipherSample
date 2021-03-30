@@ -1,6 +1,5 @@
 package com.demo.sqliteciphersample
 
-
 import android.content.Context
 import android.text.Editable
 import net.sqlcipher.database.SQLiteDatabase
@@ -8,7 +7,7 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 
-
+//source: https://github.com/commonsguy/cwac-saferoom
 object SQLCipherUtils {
     /**
      * Determine whether or not this database appears to be encrypted, based

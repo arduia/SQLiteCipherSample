@@ -15,11 +15,7 @@ data class NoteDto(
     val note: String,
 
     @ColumnInfo(name = "date")
-    val date: Long,
-
-    @ColumnInfo(name = "title")
-    val title: String
-
+    val date: Long
 ) {
 
     companion object {

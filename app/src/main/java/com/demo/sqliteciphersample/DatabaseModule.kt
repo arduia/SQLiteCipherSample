@@ -27,15 +27,17 @@ object DatabaseModule {
 
         val state = SQLCipherUtils.getDatabaseState(context, NoteDb.NAME)
         if (state == SQLCipherUtils.State.UNENCRYPTED) {
+            Log.d("DbModule", "unencrypted!")
             SQLCipherUtils.encrypt(context, NoteDb.NAME, testBytes)
+            Log.d("DbModule","Just Encrypted Db!")
         }
         val passphrase = SQLiteDatabase.getBytes(testBytes)
         val factory = SupportFactory(passphrase)
 
         return Room.databaseBuilder(context, NoteDb::class.java, NoteDb.NAME)
             .openHelperFactory(factory)
+            .addMigrations(NoteDb.MIGRATION_2_3, NoteDb.MIGRATION_3_4,NoteDb.MIGRATION_4_5, NoteDb.MIGRATION_5_6)
             .fallbackToDestructiveMigration()
-            .addMigrations(NoteDb.MIGRATION_2_3, NoteDb.MIGRATION_3_4)
             .build()
     }
 
